@@ -7,9 +7,8 @@ import 'package:meals_app/screens/mealScreen.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen(
-      {super.key, required this.togglefavorites, required this.avilableMeals});
+      {super.key, required this.avilableMeals});
 
-  final void Function(Meal meal) togglefavorites;
   final List<Meal> avilableMeals;
 
   void _selectedScreen(BuildContext context, Category category) {
@@ -25,7 +24,6 @@ class CategoriesScreen extends StatelessWidget {
             builder: (ctx) => MealScreen(
                   title: category.title,
                   meals: filteredMeal,
-                  togglefavorites: togglefavorites,
                 )));
   }
 
