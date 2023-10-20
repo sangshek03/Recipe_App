@@ -44,11 +44,17 @@ The Meal Recipe App offers a user-friendly interface with the following features
 
 1. **Category Selection**: Users can explore various meal categories, such as summer dishes, Asian cuisine, breakfast, and more.
 
-2. **Meal Recipe Selection**: Users can explore various meal Recipe and more.
+2. **Meal Recipe Selection**: Users can explore various meal Recipes and more.
 
 3. **Filter Meals**: The app provides a filter feature to narrow down meal options based on dietary preferences, including vegan and vegetarian choices.
 
 4. **Favorite Meals**: Users can mark their favorite recipes and access them in the "Favorites" section.
+
+5. **Smooth Animations**: The app incorporates animations to provide a visually pleasing and engaging user interface.
+   
+7. **Riverpod State Management**: Riverpod is used for state management, ensuring efficient data handling and a responsive user experience.
+
+Riverpod State Management: Riverpod is used for state management, ensuring efficient data handling and a responsive user experience
 
 This app is designed to help users discover and manage meal recipes based on their preferences.
 
