@@ -16,21 +16,35 @@ class MealDetailScreen extends ConsumerWidget {
           title: Text(meal.title),
           actions: [
             IconButton(
-                onPressed: () {
-                  final wasAdded = ref
-                      .read(favoritesMealsProvider.notifier)
-                      .toggleMealFavoriteStatus(meal);
+              onPressed: () {
+                final wasAdded = ref
+                    .read(favoritesMealsProvider.notifier)
+                    .toggleMealFavoriteStatus(meal);
 
-                  // print(wasAdded ? 'true' : 'false');
+                // print(wasAdded ? 'true' : 'false');
 
-                  ScaffoldMessenger.of(context).clearSnackBars();
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(wasAdded
-                          ? 'Meal is Added to Favorites'
-                          : 'Meal is Removed from Favorites')));
+                ScaffoldMessenger.of(context).clearSnackBars();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(wasAdded
+                        ? 'Meal is Added to Favorites'
+                        : 'Meal is Removed from Favorites')));
+              },
+              icon: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (child, animation) {
+                  return RotationTransition(
+                    turns: Tween(begin: 0.9, end: 1.0).animate(animation),
+                    child: child,
+                  );
                 },
-                icon: Icon(favoritesMeals.contains(meal) ? Icons.star : Icons.star_border)
+                child: Icon(
+                  favoritesMeals.contains(meal)
+                      ? Icons.star
+                      : Icons.star_border,
+                  key: ValueKey(favoritesMeals.contains(meal)),
                 ),
+              ),
+            ),
           ],
         ),
         body: SingleChildScrollView(
@@ -46,8 +60,11 @@ class MealDetailScreen extends ConsumerWidget {
                 color: Colors.amber,
                 clipBehavior: Clip.hardEdge,
                 // padding: const EdgeInsets.all(16),
-                child: Image.network(meal.imageUrl,
-                    height: 300, width: double.infinity, fit: BoxFit.cover),
+                child: Hero(
+                  tag: meal.id,
+                  child: Image.network(meal.imageUrl,
+                      height: 300, width: double.infinity, fit: BoxFit.cover),
+                ),
               ),
               Container(
                   color: const Color.fromARGB(54, 0, 0, 0),
